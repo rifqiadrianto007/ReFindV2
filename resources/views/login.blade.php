@@ -61,14 +61,21 @@
                                     class="w-full px-4 py-3 pr-12 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/70 backdrop-blur-md outline-none focus:bg-white/20 focus:border-white/40 focus:ring-2 focus:ring-white/20 transition duration-300"
                                     required />
                                 <button type="button" id="togglePassword"
-                                    class="absolute top-1/2 right-3 -translate-y-1/2 text-white">
-                                    <!-- Heroicons eye -->
-                                    <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6"
+                                    class="absolute top-1/2 right-3 -translate-y-1/2 text-white focus:outline-none">
+                                    <!-- Icon terlihat -->
+                                    <svg id="eyeOpen" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 block"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                    </svg>
+
+                                    <!-- Icon tersembunyi -->
+                                    <svg id="eyeClosed" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hidden"
+                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.974 9.974 0 012.23-3.568M6.61 6.61a10.03 10.03 0 014.4-1.61m2.715.297a9.978 9.978 0 014.932 3.045M21 21L3 3" />
                                     </svg>
                                 </button>
                             </div>
@@ -88,34 +95,20 @@
     </div>
 
     <script>
-        const togglePassword = document.getElementById('togglePassword');
         const passwordInput = document.getElementById('password');
-        const eyeIcon = document.getElementById('eyeIcon');
+        const togglePassword = document.getElementById('togglePassword');
+        const eyeOpen = document.getElementById('eyeOpen');
+        const eyeClosed = document.getElementById('eyeClosed');
 
         togglePassword.addEventListener('click', () => {
-            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-            passwordInput.setAttribute('type', type);
+            const isHidden = passwordInput.getAttribute('type') === 'password';
+            passwordInput.setAttribute('type', isHidden ? 'text' : 'password');
 
-            // Ganti ikon saat ditoggle
-            if (type === 'text') {
-                eyeIcon.outerHTML = `
-                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.974 9.974 0 012.23-3.568M6.61 6.61a10.03 10.03 0 014.4-1.61m2.715.297a9.978 9.978 0 014.932 3.045M21 21L3 3" />
-                </svg>`;
-            } else {
-                eyeIcon.outerHTML = `
-                <svg id="eyeIcon" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                    viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                </svg>`;
-            }
+            eyeOpen.classList.toggle('hidden', !isHidden);
+            eyeClosed.classList.toggle('hidden', isHidden);
         });
     </script>
+
 
 </body>
 

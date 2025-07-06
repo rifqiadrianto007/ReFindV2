@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body class="bg-pattern min-h-screen font-[Nexa] relative overflow-hidden">
+<body class="bg-pattern min-h-screen font-[Nexa] relative overflow-hidden scrollbar-hide">
 
     <!-- Logo di pojok kanan atas -->
     <div class="absolute top-4 right-4 z-20 flex items-center gap-2">

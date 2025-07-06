@@ -105,7 +105,7 @@
                         <div class="flex items-center justify-center h-12 w-12">
                             <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="h-10 w-auto" />
                         </div>
-                        <a href="/dashboard" class="font-bold text-2xl">ReFind.</a>
+                        <a href="/dashboard" class="font-bold text-2xl">ReFind</a>
                     </div>
 
                     <!-- Navigation - Center -->

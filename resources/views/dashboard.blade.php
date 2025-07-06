@@ -1,20 +1,3 @@
-<!DOCTYPE html>
-<html lang="id">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ReFind.</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.cdnfonts.com/css/nexa" rel="stylesheet" />
-    <style>
-        body {
-            font-family: 'Nexa', sans-serif;
-        }
-    </style>
-</head>
-
-<body class="min-h-screen font-[Nexa] relative scrollbar-hide">
     <!DOCTYPE html>
     <html lang="id">
 
@@ -27,7 +10,7 @@
         <link href="https://fonts.cdnfonts.com/css/nexa" rel="stylesheet" />
         <style>
             body {
-                font-family: 'Nexa', sans-serif;
+                font-family: 'Nexa';
             }
 
             .scrollbar-hide {
@@ -97,7 +80,7 @@
                 }
             }
         }"
-            class="fixed top-0 left-0 right-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm border-b border-gray-200 font-[Nexa]">
+            class="fixed top-0 left-0 right-0 w-full bg-white/50 backdrop-blur z-50 shadow-sm border-b font-[Nexa]">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex items-center justify-between h-16">
                     <!-- Logo - Left Side -->
@@ -182,7 +165,7 @@
             </div>
         </nav>
 
-        <section id="dashboard" class="pt-16 bg-blue-900 text-white">
+        <section id="dashboard" class="pt-16 bg-white text-black">
             <div class="w-full h-[300px] relative overflow-hidden">
                 <img src="{{ asset('img/header.png') }}" alt="header" class="w-full h-[300px] object-cover" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-40"></div>
@@ -200,12 +183,12 @@
                 <div class="grid md:grid-cols-2 gap-8 md:gap-12">
                     <div>
                         <div class="mb-6">
-                            <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Selamat Datang di <span
-                                    class="text-black">ReFind.</span></h3>
-                            <div class="w-16 h-1 bg-black mb-6"></div>
+                            <h3 class="text-2xl md:text-3xl font-bold text-black mb-2">Selamat Datang di <span
+                                    class="text-blue-800">ReFind.</span></h3>
+                            <div class="w-16 h-1 bg-blue-800 mb-6"></div>
                         </div>
 
-                        <div class="prose prose-lg max-w-none text-white text-justify">
+                        <div class="prose prose-lg max-w-none text-black text-justify">
                             <p>
                                 SiCekam merupakan solusi lengkap yang dibangun khusus untuk memudahkan para peternak
                                 ayam
@@ -224,22 +207,22 @@
                     </div>
 
                     <div
-                        class="bg-blue-800 border-l-4 border-black rounded-xl p-8 shadow-lg transform transition hover:-translate-y-1">
-                        <h3 class="text-2xl font-bold text-white mb-6">Manfaat Utama</h3>
+                        class="bg-gray-100 border-l-4 border-blue-800 rounded-xl p-8 shadow-lg transform transition hover:-translate-y-1">
+                        <h3 class="text-2xl font-bold text-black mb-6">Manfaat Utama</h3>
 
                         <div class="space-y-4">
-                            <div class="border-b border-dashed border-white pb-3 mb-3 flex">
+                            <div class="border-b border-dashed border-blue-800 pb-3 mb-3 flex">
                                 <div
                                     class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600"
-                                        fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-800" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                     </svg>
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-black">Penghitungan Akurat</h4>
-                                    <p class="text-white mt-1">Hitung jumlah ayam secara instan dan akurat tanpa perlu
+                                    <p class="text-black mt-1">Hitung jumlah ayam secara instan dan akurat tanpa perlu
                                         menghitung manual</p>
                                 </div>
                             </div>
@@ -255,7 +238,7 @@
                                 </div>
                                 <div>
                                     <h4 class="font-semibold text-black">Deteksi Kesehatan</h4>
-                                    <p class="text-white mt-1">Identifikasi masalah kesehatan ayam sejak dini melalui
+                                    <p class="text-black mt-1">Identifikasi masalah kesehatan ayam sejak dini melalui
                                         analisis visual</p>
                                 </div>
                             </div>
@@ -266,19 +249,19 @@
         </section>
 
         {{-- Fitur --}}
-        <section id="fitur" class="py-20 bg-blue-900 text-white">
+        <section id="fitur" class="py-20 bg-white text-black">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-16">
                     <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">Fitur Unggulan</h2>
-                    <div class="w-16 h-1 bg-white mx-auto mb-6"></div>
-                    <p class="text-lg text-white max-w-3xl mx-auto">
+                    <div class="w-16 h-1 bg-blue-800 mx-auto mb-6"></div>
+                    <p class="text-lg text-black max-w-3xl mx-auto">
                         Kami menghadirkan solusi terbaik untuk kebutuhan pengelolaan peternakan ayam modern
                     </p>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
                     <div
-                        class="bg-blue-800 rounded-xl overflow-hidden shadow-lg transform transition hover:-translate-y-1">
+                        class="bg-gray-100 rounded-xl overflow-hidden shadow-lg transform transition hover:-translate-y-1">
                         <div class="p-8">
                             <div
                                 class="bg-white relative z-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
@@ -291,7 +274,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-xl font-bold text-black mb-3">Scan Jumlah Ayam</h3>
-                            <p class="text-white mb-6 text-justify">
+                            <p class="text-black mb-6 text-justify">
                                 Dengan teknologi computer vision yang canggih, cukup ambil foto kandang dan sistem akan
                                 menghitung jumlah ayam secara otomatis dengan akurasi tinggi.
                             </p>
@@ -303,7 +286,7 @@
                                 href="{{ route('login') }}"
                                 onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
                             @endguest --}}
-                                class="text-white font-medium inline-flex items-center hover:text-black transition group">
+                                class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
                                 <span>Coba Fitur Ini</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 ml-2 transform transition group-hover:translate-x-1"
@@ -317,7 +300,7 @@
                     </div>
 
                     <div
-                        class="bg-blue-800 rounded-xl overflow-hidden shadow-lg transform transition hover:-translate-y-1">
+                        class="bg-gray-100 rounded-xl overflow-hidden shadow-lg transform transition hover:-translate-y-1">
                         <div class="p-8">
                             <div
                                 class="bg-white relative z-10 w-14 h-14 rounded-full flex items-center justify-center mb-6">
@@ -328,7 +311,7 @@
                                 </svg>
                             </div>
                             <h3 class="text-xl font-bold text-black mb-3">Scan Jumlah Ayam</h3>
-                            <p class="text-white mb-6 text-justify">
+                            <p class="text-black mb-6 text-justify">
                                 Dengan teknologi computer vision yang canggih, cukup ambil foto kandang dan sistem akan
                                 menghitung jumlah ayam secara otomatis dengan akurasi tinggi.
                             </p>
@@ -340,7 +323,7 @@
                                 href="{{ route('login') }}"
                                 onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
                             @endguest --}}
-                                class="text-white font-medium inline-flex items-center hover:text-black transition group">
+                                class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
                                 <span>Coba Fitur Ini</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 ml-2 transform transition group-hover:translate-x-1"

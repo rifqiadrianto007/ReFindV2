@@ -116,7 +116,7 @@
             </div>
         </div>
     </nav>
-    <section id="dashboard" class="pt-16">
+    <section id="dashboard" class="pt-16 bg-blue-900 text-white">
         <div class="w-full h-[300px] relative overflow-hidden">
             <img src="{{ asset('img/header.png') }}" alt="header"
                 class="w-full h-[300px] object-cover" />
@@ -134,11 +134,11 @@
                 <div>
                     <div class="mb-6">
                         <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">Selamat Datang di <span
-                                class="text-indigo-700">SiCekam</span></h3>
-                        <div class="w-16 h-1 bg-indigo-600 mb-6"></div>
+                                class="text-white">ReFind.</span></h3>
+                        <div class="w-16 h-1 bg-white mb-6"></div>
                     </div>
 
-                    <div class="prose prose-lg max-w-none text-gray-600">
+                    <div class="prose prose-lg max-w-none text-white">
                         <p>
                             SiCekam merupakan solusi lengkap yang dibangun khusus untuk memudahkan para peternak ayam
                             dalam melakukan monitoring dan pengecekan kondisi ayam secara berkala.
@@ -155,38 +155,38 @@
                 </div>
 
                 <div
-                    class="bg-white/95 border-l-4 border-[#4e4376] rounded-xl p-8 shadow-lg transform transition hover:-translate-y-1">
-                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Manfaat Utama</h3>
+                    class="bg-blue-900 border-l-4 border-black rounded-xl p-8 shadow-lg transform transition hover:-translate-y-1">
+                    <h3 class="text-2xl font-bold text-white mb-6">Manfaat Utama</h3>
 
                     <div class="space-y-4">
                         <div class="border-b border-dashed border-gray-200 pb-3 mb-3 flex">
                             <div
-                                class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none"
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-900">Penghitungan Akurat</h4>
-                                <p class="text-gray-600 mt-1">Hitung jumlah ayam secara instan dan akurat tanpa perlu
+                                <h4 class="font-semibold text-black">Penghitungan Akurat</h4>
+                                <p class="text-white mt-1">Hitung jumlah ayam secara instan dan akurat tanpa perlu
                                     menghitung manual</p>
                             </div>
                         </div>
 
                         <div class="flex">
                             <div
-                                class="flex-shrink-0 w-12 h-12 rounded-full bg-indigo-100 flex items-center justify-center mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" fill="none"
+                                class="flex-shrink-0 w-12 h-12 rounded-full bg-white flex items-center justify-center mr-4">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                             </div>
                             <div>
-                                <h4 class="font-semibold text-gray-900">Deteksi Kesehatan</h4>
-                                <p class="text-gray-600 mt-1">Identifikasi masalah kesehatan ayam sejak dini melalui
+                                <h4 class="font-semibold text-black">Deteksi Kesehatan</h4>
+                                <p class="text-white mt-1">Identifikasi masalah kesehatan ayam sejak dini melalui
                                     analisis visual</p>
                             </div>
                         </div>
@@ -197,7 +197,7 @@
     </section>
 
     {{-- Fitur --}}
-    <section id="fitur" class="py-20 bg-gray-50">
+    <section id="fitur" class="py-20 bg-blue-900 text-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-3">Fitur Unggulan</h2>

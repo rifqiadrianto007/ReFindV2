@@ -277,14 +277,7 @@
                                 Dengan bantuan platform ini, cukup isi form laporan kehilangan dengan detail dan barang
                                 Anda akan langsung ditampilkan di daftar barang hilang.
                             </p>
-                            <a {{-- @auth
-                                href="{{ route('scan') }}"
-                            @endauth
-
-                            @guest
-                                href="{{ route('login') }}"
-                                onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
-                            @endguest --}}
+                            <a href="{{ route('kehilangan') }}"
                                 class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
                                 <span>Buat Laporan</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -315,14 +308,7 @@
                                 temuan
                                 Anda akan langsung ditampilkan di daftar barang temuan.
                             </p>
-                            <a {{-- @auth
-                                href="{{ route('scan') }}"
-                            @endauth
-
-                            @guest
-                                href="{{ route('login') }}"
-                                onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
-                            @endguest --}}
+                            <a href="{{ route('penemuan') }}"
                                 class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
                                 <span>Buat Laporan</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"

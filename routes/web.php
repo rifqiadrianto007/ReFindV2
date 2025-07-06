@@ -9,3 +9,11 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+
+Route::get('/kehilangan', function () {
+    return view('kehilangan');
+});
+
+Route::get('/penemuan', function () {
+    return view('penemuan');
+});

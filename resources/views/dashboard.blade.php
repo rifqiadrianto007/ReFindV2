@@ -190,18 +190,17 @@
 
                         <div class="prose prose-lg max-w-none text-black text-justify">
                             <p>
-                                SiCekam merupakan solusi lengkap yang dibangun khusus untuk memudahkan para peternak
-                                ayam
-                                dalam melakukan monitoring dan pengecekan kondisi ayam secara berkala.
+                                ReFind merupakan platform inovatif yang dirancang untuk membantu warga Universitas
+                                Jember dalam melaporkan penemuan atau kehilangan barang.
                             </p>
                             <p class="mt-4">
-                                Dengan memanfaatkan teknologi computer vision terkini, SiCekam mampu menghitung jumlah
-                                ayam
-                                secara instan dan mendeteksi kondisi kesehatan ayam hanya melalui foto.
+                                Dengan memanfaatkan plaform yang terintegrasi, maka diharapkan dapat mempermudah proses
+                                pelaporan barang di lingkungan Universitas Jember. ReFind dapat menjadi solusi yang
+                                efektif untuk mengurangi kehilangan barang dan meningkatkan keamanan di kampus.
                             </p>
                             <p class="mt-4">
-                                Platform yang dirancang dengan memahami kebutuhan peternak modern, membuat pengelolaan
-                                peternakan ayam menjadi lebih efisien dan efektif.
+                                Platform yang dirancang dengan memahami kebutuhan seluruh warga dan civitas akademika
+                                Universitas Jember.
                             </p>
                         </div>
                     </div>
@@ -221,9 +220,9 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-black">Penghitungan Akurat</h4>
-                                    <p class="text-black mt-1">Hitung jumlah ayam secara instan dan akurat tanpa perlu
-                                        menghitung manual</p>
+                                    <h4 class="font-semibold text-black">Laporan Kehilangan</h4>
+                                    <p class="text-black mt-1">Laporkan barang Anda yang hilang, sehingga dapat
+                                        ditemukan dengan cepat dan mudah.</p>
                                 </div>
                             </div>
 
@@ -237,9 +236,10 @@
                                     </svg>
                                 </div>
                                 <div>
-                                    <h4 class="font-semibold text-black">Deteksi Kesehatan</h4>
-                                    <p class="text-black mt-1">Identifikasi masalah kesehatan ayam sejak dini melalui
-                                        analisis visual</p>
+                                    <h4 class="font-semibold text-black">Penemuan Barang</h4>
+                                    <p class="text-black mt-1">Laporkan barang temuan Anda agar dapat dikembalikan
+                                        melalui
+                                        platform ini.</p>
                                 </div>
                             </div>
                         </div>
@@ -255,7 +255,8 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-black mb-3">Fitur Unggulan</h2>
                     <div class="w-16 h-1 bg-blue-800 mx-auto mb-6"></div>
                     <p class="text-lg text-black max-w-3xl mx-auto">
-                        Kami menghadirkan solusi terbaik untuk kebutuhan pengelolaan peternakan ayam modern
+                        Kami menghadirkan solusi terbaik untuk pelaporan penemuan dan kehilangan barang di lingkungan
+                        Universitas Jember.
                     </p>
                 </div>
 
@@ -273,10 +274,10 @@
                                         d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-black mb-3">Scan Jumlah Ayam</h3>
+                            <h3 class="text-xl font-bold text-black mb-3">Laporan Kehilangan</h3>
                             <p class="text-black mb-6 text-justify">
-                                Dengan teknologi computer vision yang canggih, cukup ambil foto kandang dan sistem akan
-                                menghitung jumlah ayam secara otomatis dengan akurasi tinggi.
+                                Dengan bantuan platform ini, cukup isi form laporan kehilangan dengan detail dan barang
+                                Anda akan langsung ditampilkan di daftar barang hilang.
                             </p>
                             <a {{-- @auth
                                 href="{{ route('scan') }}"
@@ -287,7 +288,7 @@
                                 onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
                             @endguest --}}
                                 class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
-                                <span>Coba Fitur Ini</span>
+                                <span>Buat Laporan</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 ml-2 transform transition group-hover:translate-x-1"
                                     viewBox="0 0 20 20" fill="currentColor">
@@ -310,10 +311,10 @@
                                         d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                                 </svg>
                             </div>
-                            <h3 class="text-xl font-bold text-black mb-3">Scan Jumlah Ayam</h3>
+                            <h3 class="text-xl font-bold text-black mb-3">Penemuan Barang</h3>
                             <p class="text-black mb-6 text-justify">
-                                Dengan teknologi computer vision yang canggih, cukup ambil foto kandang dan sistem akan
-                                menghitung jumlah ayam secara otomatis dengan akurasi tinggi.
+                                Dengan bantuan platform ini, cukup isi form laporan penemuan dengan detail dan barang temuan
+                                Anda akan langsung ditampilkan di daftar barang temuan.
                             </p>
                             <a {{-- @auth
                                 href="{{ route('scan') }}"
@@ -324,7 +325,7 @@
                                 onclick="alert('Silakan login terlebih dahulu untuk menggunakan fitur ini.')"
                             @endguest --}}
                                 class="text-blue-600 font-medium inline-flex items-center hover:text-black transition group">
-                                <span>Coba Fitur Ini</span>
+                                <span>Buat Laporan</span>
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="h-5 w-5 ml-2 transform transition group-hover:translate-x-1"
                                     viewBox="0 0 20 20" fill="currentColor">

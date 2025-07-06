@@ -33,7 +33,6 @@
     <div class="relative z-10 min-h-screen flex items-center justify-center px-4">
         <div class="w-full max-w-6xl grid lg:grid-cols-2 gap-8 items-center">
 
-            <!-- Section Quote -->
             <div class="order-1 lg:order-2 text-center lg:text-left">
                 <h2 class="text-white text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6 drop-shadow-lg">
                     "Temukan dan laporkan barang hilang dengan mudah"
@@ -49,23 +48,18 @@
                     </div>
 
                     <form class="flex flex-col gap-6">
-                        <!-- Username -->
                         <div>
                             <label for="username" class="block text-white text-sm font-medium mb-2">Username</label>
                             <input type="text" id="username" name="username" placeholder="Masukkan username"
                                 class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/70 backdrop-blur-md outline-none focus:bg-white/20 focus:border-white/40 focus:ring-2 focus:ring-white/20 transition duration-300"
                                 required />
                         </div>
-
-                        <!-- Password -->
                         <div>
                             <label for="password" class="block text-white text-sm font-medium mb-2">Password</label>
                             <input type="password" id="password" name="password" placeholder="Masukkan password"
                                 class="w-full px-4 py-3 rounded-xl bg-white/10 border border-white/20 text-white placeholder-white/70 backdrop-blur-md outline-none focus:bg-white/20 focus:border-white/40 focus:ring-2 focus:ring-white/20 transition duration-300"
                                 required />
                         </div>
-
-                        <!-- Tombol Login -->
                         <div class="pt-4">
                             <button type="submit"
                                 class="w-full px-6 py-3 rounded-xl bg-gradient-to-br from-black to-gray-800 text-white font-semibold transition duration-300 hover:translate-y-[-2px] hover:shadow-lg">

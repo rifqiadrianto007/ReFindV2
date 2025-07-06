@@ -61,7 +61,7 @@
                                 required />
                         </div>
                         <div class="pt-4">
-                            <button type="submit"
+                            <button type="submit" formaction="{{ url('/dashboard') }}"
                                 class="w-full px-6 py-3 rounded-xl bg-gradient-to-br from-black to-gray-800 text-white font-semibold transition duration-300 hover:translate-y-[-2px] hover:shadow-lg">
                                 Login
                             </button>

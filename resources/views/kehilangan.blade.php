@@ -31,11 +31,6 @@
             background: linear-gradient(90deg, #193cb8 0%, #3b82f6 50%, #193cb8 100%);
         }
 
-        .back-btn {
-            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
-            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
-        }
-
         .floating-btn {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);

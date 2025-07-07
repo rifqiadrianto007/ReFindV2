@@ -30,12 +30,41 @@
         .header-line {
             background: linear-gradient(90deg, #193cb8 0%, #3b82f6 50%, #193cb8 100%);
         }
+
+        .back-btn {
+            background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .floating-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .floating-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5);
+        }
     </style>
 </head>
 
 <body class="bg-white min-h-screen p-4 md:p-8">
     <div class="max-w-7xl mx-auto">
-        <!-- Header Section -->
+        <!-- Header with Back Button -->
+        <div class="mb-6">
+            <button class="back-btn text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 hover:scale-105">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+                </svg>
+                <span>Kembali</span>
+            </button>
+        </div>
+
+        <!-- Title Section -->
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center mb-4">
                 <div class="header-line h-1 w-32 rounded-full"></div>
@@ -154,6 +183,14 @@
             </table>
         </div>
     </div>
+
+    <!-- Floating Button -->
+    <button class="floating-btn text-white px-6 py-4 rounded-full text-sm font-semibold transition-all duration-300 flex items-center space-x-2 hover:scale-105">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+        </svg>
+        <span>Buat Laporan</span>
+    </button>
 </body>
 
 </html>

@@ -56,11 +56,9 @@
     <div class="max-w-7xl mx-auto">
         <!-- Header with Back Button -->
         <div class="mb-6">
-            <button class="back-btn text-white px-6 py-3 rounded-xl text-sm font-medium transition-all duration-300 flex items-center space-x-2 hover:scale-105">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
-                </svg>
-                <span>Kembali</span>
+            <button onclick="window.history.back()"
+                class="text-slate-700 hover:text-blue-600 flex items-center space-x-2 transition-colors duration-300 font-medium">
+                <span>← Kembali</span>
             </button>
         </div>
 
@@ -185,7 +183,8 @@
     </div>
 
     <!-- Floating Button -->
-    <button class="floating-btn text-white px-6 py-4 rounded-full text-sm font-semibold transition-all duration-300 flex items-center space-x-2 hover:scale-105">
+    <button
+        class="floating-btn text-white px-6 py-4 rounded-full text-sm font-semibold transition-all duration-300 flex items-center space-x-2 hover:scale-105">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
         </svg>

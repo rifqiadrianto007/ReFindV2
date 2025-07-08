@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ReFind.</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <link href="https://fonts.cdnfonts.com/css/nexa" rel="stylesheet" />
     <style>
         body {
@@ -82,10 +83,13 @@
                         </div>
 
                         <div class="pt-4">
-                            <button type="submit" href="{{ route('dashboard') }}"
-                                class="w-full px-6 py-3 rounded-xl bg-gradient-to-br from-black to-gray-800 text-white font-semibold transition duration-300 hover:translate-y-[-2px] hover:shadow-lg">
-                                Login
-                            </button>
+                            <a href="{{ route('dashboard') }}">
+                                <button type="button"
+                                    class="w-full px-6 py-3 rounded-xl bg-gradient-to-br from-black to-gray-800 text-white font-semibold transition duration-300 hover:translate-y-[-2px] hover:shadow-lg">
+                                    Login
+                                </button>
+                            </a>
+
                         </div>
                     </form>
                 </div>

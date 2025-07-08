@@ -8,12 +8,12 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 
 Route::get('/kehilangan', function () {
     return view('kehilangan');
-});
+})->name('kehilangan');
 
 Route::get('/penemuan', function () {
     return view('penemuan');
-});
+})->name('penemuan');

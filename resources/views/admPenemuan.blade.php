@@ -206,10 +206,10 @@
         <div class="text-center mb-8">
             <div class="inline-flex items-center justify-center mb-4">
                 <div class="header-line h-1 w-32 rounded-full"></div>
-                <h1 class="text-3xl md:text-4xl font-bold text-black mx-6">Data Kehilangan</h1>
+                <h1 class="text-3xl md:text-4xl font-bold text-black mx-6">Data Penemuan</h1>
                 <div class="header-line h-1 w-32 rounded-full"></div>
             </div>
-            <p class="text-slate-600 text-lg">Daftar barang hilang yang dilaporkan pengguna</p>
+            <p class="text-slate-600 text-lg">Daftar barang temuan yang dilaporkan</p>
         </div>
 
         <!-- Table Container -->
@@ -228,7 +228,7 @@
                             Nomor Telepon
                         </th>
                         <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
-                            Barang Hilang
+                            Barang Temuan
                         </th>
                         <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
                             Deskripsi
@@ -237,10 +237,10 @@
                             Lokasi
                         </th>
                         <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
-                            Waktu
+                            Bukti Foto
                         </th>
                         <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
-                            Kontak
+                            Aksi
                         </th>
                     </tr>
                 </thead>
@@ -269,7 +269,7 @@
                             <span class="font-semibold text-gray-900">Masjid UNEJ</span>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">
-                            <span class="font-semibold text-gray-900">Sekitar jam 3 sore</span>
+                            <span class="font-semibold text-gray-900">{ini foto barang}</span>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">
                             <button
@@ -304,7 +304,7 @@
                             <span class="font-semibold text-gray-900">Masjid UNEJ</span>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">
-                            <span class="font-semibold text-gray-900">Sekitar jam 3 sore</span>
+                            <span class="font-semibold text-gray-900">{ini foto barang}</span>
                         </td>
                         <td class="px-4 py-4 whitespace-nowrap">
                             <button

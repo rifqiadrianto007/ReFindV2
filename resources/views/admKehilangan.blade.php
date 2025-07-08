@@ -236,7 +236,7 @@
                             Waktu
                         </th>
                         <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
-                            Kontak
+                            Aksi
                         </th>
                     </tr>
                 </thead>

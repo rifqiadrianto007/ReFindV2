@@ -28,14 +28,14 @@
 <body class="bg-gray-50">
     <nav x-data="{
         isOpen: false,
-        activeSection: 'dashboard',
-        sections: ['dashboard', 'fitur'],
+        activeSection: 'admDashboard',
+        sections: ['admDashboard', 'Kehilangan', 'Penemuan'],
         init() {
             if (window.location.hash) {
                 this.activeSection = window.location.hash.substring(1);
             } else {
-                this.activeSection = 'dashboard';
-                window.history.replaceState(null, null, '#dashboard');
+                this.activeSection = 'admDashboard';
+                window.history.replaceState(null, null, '#admDashboard');
             }
 
             this.setupScrollHandler();
@@ -89,32 +89,43 @@
                     <div class="flex items-center justify-center h-12 w-12">
                         <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="h-10 w-auto" />
                     </div>
-                    <a href="/dashboard" class="font-bold text-2xl">ReFind.</a>
+                    <a href="/admDashboard" class="font-bold text-2xl">ReFind.</a>
                 </div>
 
                 <!-- Navigation - Center -->
                 <div class="hidden md:flex items-center justify-center flex-1">
                     <div class="flex space-x-12 items-center font-medium">
-                        <a href="#dashboard" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('dashboard')"
+                        <a href="#admDashboard" class="relative group py-2 transition-all duration-200"
+                            @click.prevent="scrollTo('admDashboard')"
                             :class="{
-                                'text-blue-600': activeSection === 'dashboard',
-                                'text-gray-700 hover:text-blue-600': activeSection !== 'dashboard'
+                                'text-blue-600': activeSection === 'admDashboard',
+                                'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
                             }">
                             <span>Dashboard</span>
                             <span class="absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300"
-                                :class="activeSection === 'dashboard' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                                :class="activeSection === 'admDashboard' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="#fitur" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('fitur')"
+                        <a href="#Kehilangan" class="relative group py-2 transition-all duration-200"
+                            @click.prevent="scrollTo('Kehilangan')"
                             :class="{
-                                'text-blue-600': activeSection === 'fitur',
-                                'text-gray-700 hover:text-blue-600': activeSection !== 'fitur'
+                                'text-blue-600': activeSection === 'Kehilangan',
+                                'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
                             }">
-                            <span>Fitur</span>
+                            <span>Kehilangan</span>
                             <span class="absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300"
-                                :class="activeSection === 'fitur' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                                :class="activeSection === 'Kehilangan' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
+                        </a>
+
+                        <a href="#Penemuan" class="relative group py-2 transition-all duration-200"
+                            @click.prevent="scrollTo('Penemuan')"
+                            :class="{
+                                'text-blue-600': activeSection === 'Penemuan',
+                                'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
+                            }">
+                            <span>Penemuan</span>
+                            <span class="absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300"
+                                :class="activeSection === 'Penemuan' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
                     </div>
                 </div>
@@ -139,27 +150,38 @@
                 x-transition:leave-end="opacity-0 transform scale-95"
                 class="md:hidden border-t border-gray-200 bg-white">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#dashboard"
+                    <a href="#admDashboard"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('dashboard'); isOpen = false"
+                        @click.prevent="scrollTo('admDashboard'); isOpen = false"
                         :class="{
-                            'text-blue-600': activeSection === 'dashboard',
-                            'text-gray-700 hover:text-blue-600': activeSection !== 'dashboard'
+                            'text-blue-600': activeSection === 'admDashboard',
+                            'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
                         }">
                         Dashboard
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
-                            :class="activeSection === 'dashboard' ? 'w-16' : 'w-0'"></span>
+                            :class="activeSection === 'admDashboard' ? 'w-16' : 'w-0'"></span>
                     </a>
-                    <a href="#fitur"
+                    <a href="#Kehilangan"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('fitur'); isOpen = false"
+                        @click.prevent="scrollTo('admKehilangan'); isOpen = false"
                         :class="{
-                            'text-blue-600': activeSection === 'fitur',
-                            'text-gray-700 hover:text-blue-600': activeSection !== 'fitur'
+                            'text-blue-600': activeSection === 'admKehilangan',
+                            'text-gray-700 hover:text-blue-600': activeSection !== 'admKehilangan'
                         }">
-                        Fitur
+                        Kehilangan
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
-                            :class="activeSection === 'fitur' ? 'w-12' : 'w-0'"></span>
+                            :class="activeSection === 'admKehilangan' ? 'w-12' : 'w-0'"></span>
+                    </a>
+                    <a href="#Penemuan"
+                        class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
+                        @click.prevent="scrollTo('admPenemuan'); isOpen = false"
+                        :class="{
+                            'text-blue-600': activeSection === 'admPenemuan',
+                            'text-gray-700 hover:text-blue-600': activeSection !== 'admPenemuan'
+                        }">
+                        Penemuan
+                        <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
+                            :class="activeSection === 'admPenemuan' ? 'w-12' : 'w-0'"></span>
                     </a>
                 </div>
             </div>

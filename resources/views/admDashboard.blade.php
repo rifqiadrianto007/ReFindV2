@@ -130,14 +130,33 @@
                     </div>
                 </div>
 
-                <!-- Mobile menu button -->
-                <div class="md:hidden">
-                    <button @click="isOpen = !isOpen" class="text-gray-700 hover:text-blue-600 focus:outline-none">
-                        <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                <!-- Right Side - Logout Button and Mobile Menu -->
+                <div class="flex items-center space-x-4">
+                    <!-- Logout Button (Desktop) -->
+                    <div class="hidden md:block">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <button type="submit"
+                                class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-500 transition-colors duration-200 rounded-md hover:bg-gray-100">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                Logout
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden">
+                        <button @click="isOpen = !isOpen" class="text-gray-700 hover:text-blue-600 focus:outline-none">
+                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
 
@@ -163,52 +182,46 @@
                     </a>
                     <a href="#Kehilangan"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('admKehilangan'); isOpen = false"
+                        @click.prevent="scrollTo('Kehilangan'); isOpen = false"
                         :class="{
-                            'text-blue-600': activeSection === 'admKehilangan',
-                            'text-gray-700 hover:text-blue-600': activeSection !== 'admKehilangan'
+                            'text-blue-600': activeSection === 'Kehilangan',
+                            'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
                         }">
                         Kehilangan
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
-                            :class="activeSection === 'admKehilangan' ? 'w-12' : 'w-0'"></span>
+                            :class="activeSection === 'Kehilangan' ? 'w-12' : 'w-0'"></span>
                     </a>
                     <a href="#Penemuan"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('admPenemuan'); isOpen = false"
+                        @click.prevent="scrollTo('Penemuan'); isOpen = false"
                         :class="{
-                            'text-blue-600': activeSection === 'admPenemuan',
-                            'text-gray-700 hover:text-blue-600': activeSection !== 'admPenemuan'
+                            'text-blue-600': activeSection === 'Penemuan',
+                            'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
                         }">
                         Penemuan
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
-                            :class="activeSection === 'admPenemuan' ? 'w-12' : 'w-0'"></span>
+                            :class="activeSection === 'Penemuan' ? 'w-12' : 'w-0'"></span>
                     </a>
+
+                    <!-- Logout Button (Mobile) -->
+                    <div class="border-t border-gray-200 pt-2 mt-2">
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <button type="submit"
+                                class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-red-500 transition-colors duration-200">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none"
+                                    viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                </svg>
+                                Logout
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </nav>
-    <!-- User Info (Logout) -->
-    <div class="absolute bottom-4 left-4 right-4">
-        <div class="flex items-center px-4 py-3 bg-gray-100 rounded-lg">
-            <div
-                class="w-10 h-10 bg-gradient-to-r from-blue-600 to-blue-800 rounded-full flex items-center justify-center">
-                <span class="text-white font-medium">A</span>
-            </div>
-            <div class="ml-3 flex-1">
-                <p class="text-sm font-medium text-gray-800">Admin</p>
-            </div>
-            <form method="POST" action="{{ route('login') }}">
-                @csrf
-                <button type="submit" aria-label="Logout" class="text-gray-400 hover:text-red-500 transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
-                </button>
-            </form>
-        </div>
-    </div>
 </body>
 
 </html>

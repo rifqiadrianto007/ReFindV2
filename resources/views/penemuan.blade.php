@@ -44,10 +44,59 @@
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5);
         }
+
+        .modal-overlay {
+            backdrop-filter: blur(5px);
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-input {
+            background: rgba(255, 255, 255, 0.8);
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            background: white;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .upload-area {
+            border: 2px dashed #cbd5e1;
+            background: rgba(248, 250, 252, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.05);
+        }
+
+        .upload-area.drag-over {
+            border-color: #3b82f6;
+            background: rgba(59, 130, 246, 0.1);
+        }
     </style>
 </head>
 
-<body class="bg-white min-h-screen p-4 md:p-8">
+<body class="bg-white min-h-screen p-4 md:p-8" x-data="{ showModal: false, jenisLaporan: 'penemuan' }">
     <div class="max-w-7xl mx-auto">
         <!-- Header with Back Button -->
         <div class="mb-6">
@@ -178,13 +227,180 @@
     </div>
 
     <!-- Floating Button -->
-    <button
+    <button @click="showModal = true"
         class="floating-btn text-white px-6 py-4 rounded-full text-sm font-semibold transition-all duration-300 flex items-center space-x-2 hover:scale-105">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
         </svg>
         <span>Buat Laporan</span>
     </button>
+
+    <!-- Modal -->
+    <div x-show="showModal" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100" x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-50 flex items-center justify-center p-4 modal-overlay" x-cloak>
+
+        <div @click.away="showModal = false" x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+            x-transition:leave="transition ease-in duration-200" x-transition:leave-start="opacity-100 scale-100"
+            x-transition:leave-end="opacity-0 scale-95"
+            class="modal-content rounded-3xl max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide">
+
+            <!-- Modal Header -->
+            <div class="px-8 py-6 border-b border-gray-200">
+                <div class="flex items-center justify-between">
+                    <h2 class="text-2xl font-bold text-gray-900">Buat Laporan</h2>
+                    <button @click="showModal = false"
+                        class="text-gray-500 hover:text-gray-700 transition-colors duration-300 p-2">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M6 18L18 6M6 6l12 12"></path>
+                        </svg>
+                    </button>
+                </div>
+                <p class="text-gray-600 mt-2">Isi form di bawah untuk membuat laporan kehilangan atau penemuan barang
+                </p>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="px-8 py-6">
+                <form class="space-y-6">
+                    <!-- Nama Lengkap -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap *</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 rounded-xl outline-none"
+                            placeholder="Masukkan nama lengkap Anda">
+                    </div>
+
+                    <!-- Nomor Telepon -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor Telepon *</label>
+                        <input type="tel" required class="form-input w-full px-4 py-3 rounded-xl outline-none"
+                            placeholder="Contoh: 08123456789">
+                    </div>
+
+                    <!-- Jenis Laporan -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Jenis Laporan *</label>
+                        <div class="grid grid-cols-2 gap-4">
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="jenisLaporan" value="kehilangan" x-model="jenisLaporan"
+                                    class="w-5 h-5 text-blue-600 focus:ring-blue-500">
+                                <span class="text-gray-700 font-medium">Kehilangan</span>
+                            </label>
+                            <label class="flex items-center space-x-3 cursor-pointer">
+                                <input type="radio" name="jenisLaporan" value="penemuan" x-model="jenisLaporan"
+                                    class="w-5 h-5 text-blue-600 focus:ring-blue-500">
+                                <span class="text-gray-700 font-medium">Penemuan</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Nama Barang -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Barang *</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 rounded-xl outline-none"
+                            placeholder="Contoh: Smartphone, Tas, Dompet, dll">
+                    </div>
+
+                    <!-- Deskripsi Barang -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Deskripsi Barang *</label>
+                        <textarea required rows="4" class="form-input w-full px-4 py-3 rounded-xl outline-none resize-none"
+                            placeholder="Jelaskan ciri-ciri barang secara detail (warna, ukuran, merek, dll)"></textarea>
+                    </div>
+
+                    <!-- Lokasi -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Lokasi *</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 rounded-xl outline-none"
+                            placeholder="Contoh: Masjid UNEJ, Perpustakaan, Kantin, dll">
+                    </div>
+
+                    <!-- Waktu -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Waktu *</label>
+                        <input type="text" required class="form-input w-full px-4 py-3 rounded-xl outline-none"
+                            placeholder="Contoh: Sekitar jam 3 sore, Pagi hari tanggal 5 Januari">
+                    </div>
+
+                    <!-- Upload Gambar (Khusus untuk Penemuan) -->
+                    <div x-show="jenisLaporan === 'penemuan'" x-transition>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Upload Gambar Barang *</label>
+                        <div class="upload-area border-2 border-dashed rounded-xl p-8 text-center cursor-pointer"
+                            ondrop="handleDrop(event)" ondragover="handleDragOver(event)"
+                            ondragleave="handleDragLeave(event)">
+                            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12">
+                                </path>
+                            </svg>
+                            <p class="text-gray-600 mb-2">Drag & drop gambar di sini atau klik untuk memilih</p>
+                            <p class="text-sm text-gray-500">Maksimal 5MB, format: JPG, PNG, JPEG</p>
+                            <input type="file" accept="image/*" multiple class="hidden" id="imageUpload">
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <div class="flex justify-end space-x-4 pt-4">
+                        <button type="button" @click="showModal = false"
+                            class="px-6 py-3 text-gray-700 bg-gray-200 rounded-xl font-semibold hover:bg-gray-300 transition-colors duration-300">
+                            Batal
+                        </button>
+                        <button type="submit"
+                            class="submit-btn text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300">
+                            Kirim Laporan
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle drag and drop for file upload
+        function handleDragOver(e) {
+            e.preventDefault();
+            e.currentTarget.classList.add('drag-over');
+        }
+
+        function handleDragLeave(e) {
+            e.currentTarget.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            e.currentTarget.classList.remove('drag-over');
+
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                console.log('Files dropped:', files);
+                // Handle file upload here
+            }
+        }
+
+        // Handle click on upload area
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.querySelector('.upload-area');
+            const fileInput = document.getElementById('imageUpload');
+
+            if (uploadArea && fileInput) {
+                uploadArea.addEventListener('click', function() {
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', function(e) {
+                    const files = e.target.files;
+                    if (files.length > 0) {
+                        console.log('Files selected:', files);
+                        // Handle file upload here
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

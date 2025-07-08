@@ -56,20 +56,20 @@
         }
     }"
         class="fixed top-0 left-0 right-0 w-full bg-white/50 backdrop-blur z-50 shadow-sm border-b font-[Nexa]">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-16">
                 <!-- Logo - Left Side -->
                 <div class="flex items-center space-x-3">
-                    <div class="flex items-center justify-center h-12 w-12">
-                        <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="h-10 w-auto" />
+                    <div class="flex items-center justify-center w-12 h-12">
+                        <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="w-auto h-10" />
                     </div>
-                    <a href="{{ route('admDashboard') }}" class="font-bold text-2xl">ReFind.</a>
+                    <a href="{{ route('admDashboard') }}" class="text-2xl font-bold">ReFind.</a>
                 </div>
 
                 <!-- Navigation - Center -->
-                <div class="hidden md:flex items-center justify-center flex-1">
-                    <div class="flex space-x-12 items-center font-medium">
-                        <a href="{{ route('admDashboard') }}" class="relative group py-2 transition-all duration-200"
+                <div class="items-center justify-center flex-1 hidden md:flex">
+                    <div class="flex items-center space-x-12 font-medium">
+                        <a href="{{ route('admDashboard') }}" class="relative py-2 transition-all duration-200 group"
                             :class="{
                                 'text-blue-600': activeSection === 'admDashboard',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
@@ -79,7 +79,7 @@
                                 :class="activeSection === 'admDashboard' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="{{ route('admKehilangan') }}" class="relative group py-2 transition-all duration-200"
+                        <a href="{{ route('admKehilangan') }}" class="relative py-2 transition-all duration-200 group"
                             :class="{
                                 'text-blue-600': activeSection === 'Kehilangan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
@@ -89,7 +89,7 @@
                                 :class="activeSection === 'Kehilangan' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="{{ route('admPenemuan') }}" class="relative group py-2 transition-all duration-200"
+                        <a href="{{ route('admPenemuan') }}" class="relative py-2 transition-all duration-200 group"
                             :class="{
                                 'text-blue-600': activeSection === 'Penemuan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
@@ -108,7 +108,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <button type="submit"
-                                class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 hover:text-red-500 transition-colors duration-200 rounded-md hover:bg-gray-100">
+                                class="flex items-center px-4 py-2 text-sm font-medium text-gray-700 transition-colors duration-200 rounded-md hover:text-red-500 hover:bg-gray-100">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -122,7 +122,7 @@
                     <!-- Mobile menu button -->
                     <div class="md:hidden">
                         <button @click="isOpen = !isOpen" class="text-gray-700 hover:text-blue-600 focus:outline-none">
-                            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M4 6h16M4 12h16M4 18h16"></path>
                             </svg>
@@ -138,7 +138,7 @@
                 x-transition:leave="transition ease-in duration-75"
                 x-transition:leave-start="opacity-100 transform scale-100"
                 x-transition:leave-end="opacity-0 transform scale-95"
-                class="md:hidden border-t border-gray-200 bg-white">
+                class="bg-white border-t border-gray-200 md:hidden">
                 <div class="px-2 pt-2 pb-3 space-y-1">
                     <a href="{{ route('admDashboard') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
@@ -175,11 +175,11 @@
                     </a>
 
                     <!-- Logout Button (Mobile) -->
-                    <div class="border-t border-gray-200 pt-2 mt-2">
+                    <div class="pt-2 mt-2 border-t border-gray-200">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <button type="submit"
-                                class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 hover:text-red-500 transition-colors duration-200">
+                                class="flex items-center w-full px-3 py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-red-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 mr-2" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

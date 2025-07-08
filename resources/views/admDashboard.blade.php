@@ -14,10 +14,14 @@
             font-family: 'Nexa';
         }
 
+        ,
+
         .scrollbar-hide {
             -ms-overflow-style: none;
             scrollbar-width: none;
         }
+
+        ,
 
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -29,56 +33,26 @@
     <nav x-data="{
         isOpen: false,
         activeSection: 'admDashboard',
-        sections: ['admDashboard', 'Kehilangan', 'Penemuan'],
         init() {
-            if (window.location.hash) {
-                this.activeSection = window.location.hash.substring(1);
-            } else {
+            // Determine active section based on current URL
+            const path = window.location.pathname.toLowerCase();
+            const fullUrl = window.location.href.toLowerCase();
+
+            console.log('Current path:', path); // Debug log
+            console.log('Full URL:', fullUrl); // Debug log
+
+            if (path.includes('kehilangan') || path.includes('admkehilangan') || fullUrl.includes('kehilangan')) {
+                this.activeSection = 'Kehilangan';
+            } else if (path.includes('penemuan') || path.includes('admpenemuan') || fullUrl.includes('penemuan')) {
+                this.activeSection = 'Penemuan';
+            } else if (path.includes('dashboard') || path.includes('admdashboard') || fullUrl.includes('dashboard')) {
                 this.activeSection = 'admDashboard';
-                window.history.replaceState(null, null, '#admDashboard');
+            } else {
+                // Default fallback - check if we're on root or any other page
+                this.activeSection = 'admDashboard';
             }
 
-            this.setupScrollHandler();
-        },
-        setupScrollHandler() {
-            let ticking = false;
-
-            const checkSections = () => {
-                const scrollPosition = window.scrollY + (window.innerHeight / 3);
-
-                this.sections.forEach(section => {
-                    const el = document.getElementById(section);
-                    if (el) {
-                        const { offsetTop, offsetHeight } = el;
-                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                            if (this.activeSection !== section) {
-                                this.activeSection = section;
-                                window.history.replaceState(null, null, `#${section}`);
-                            }
-                        }
-                    }
-                });
-
-                ticking = false;
-            };
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(checkSections);
-                    ticking = true;
-                }
-            }, { passive: true });
-        },
-        scrollTo(section) {
-            this.activeSection = section;
-            const el = document.getElementById(section);
-            if (el) {
-                window.scrollTo({
-                    top: el.offsetTop,
-                    behavior: 'smooth'
-                });
-                window.history.replaceState(null, null, `#${section}`);
-            }
+            console.log('Active section set to:', this.activeSection); // Debug log
         }
     }"
         class="fixed top-0 left-0 right-0 w-full bg-white/50 backdrop-blur z-50 shadow-sm border-b font-[Nexa]">
@@ -89,14 +63,13 @@
                     <div class="flex items-center justify-center h-12 w-12">
                         <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="h-10 w-auto" />
                     </div>
-                    <a href="/admDashboard" class="font-bold text-2xl">ReFind.</a>
+                    <a href="{{ route('admDashboard') }}" class="font-bold text-2xl">ReFind.</a>
                 </div>
 
                 <!-- Navigation - Center -->
                 <div class="hidden md:flex items-center justify-center flex-1">
                     <div class="flex space-x-12 items-center font-medium">
-                        <a href="#admDashboard" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('admDashboard')"
+                        <a href="{{ route('admDashboard') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'admDashboard',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
@@ -106,8 +79,7 @@
                                 :class="activeSection === 'admDashboard' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="#Kehilangan" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('Kehilangan')"
+                        <a href="{{ route('admKehilangan') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'Kehilangan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
@@ -117,8 +89,7 @@
                                 :class="activeSection === 'Kehilangan' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="#Penemuan" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('Penemuan')"
+                        <a href="{{ route('admPenemuan') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'Penemuan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
@@ -169,9 +140,9 @@
                 x-transition:leave-end="opacity-0 transform scale-95"
                 class="md:hidden border-t border-gray-200 bg-white">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#admDashboard"
+                    <a href="{{ route('admDashboard') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('admDashboard'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'admDashboard',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
@@ -180,9 +151,9 @@
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
                             :class="activeSection === 'admDashboard' ? 'w-16' : 'w-0'"></span>
                     </a>
-                    <a href="#Kehilangan"
+                    <a href="{{ route('admKehilangan') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('Kehilangan'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'Kehilangan',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
@@ -191,9 +162,9 @@
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
                             :class="activeSection === 'Kehilangan' ? 'w-12' : 'w-0'"></span>
                     </a>
-                    <a href="#Penemuan"
+                    <a href="{{ route('admPenemuan') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('Penemuan'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'Penemuan',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'

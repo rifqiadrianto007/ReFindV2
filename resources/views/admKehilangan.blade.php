@@ -29,56 +29,26 @@
     <nav x-data="{
         isOpen: false,
         activeSection: 'admDashboard',
-        sections: ['admDashboard', 'Kehilangan', 'Penemuan'],
         init() {
-            if (window.location.hash) {
-                this.activeSection = window.location.hash.substring(1);
-            } else {
+            // Determine active section based on current URL
+            const path = window.location.pathname.toLowerCase();
+            const fullUrl = window.location.href.toLowerCase();
+
+            console.log('Current path:', path); // Debug log
+            console.log('Full URL:', fullUrl); // Debug log
+
+            if (path.includes('kehilangan') || path.includes('admkehilangan') || fullUrl.includes('kehilangan')) {
+                this.activeSection = 'Kehilangan';
+            } else if (path.includes('penemuan') || path.includes('admpenemuan') || fullUrl.includes('penemuan')) {
+                this.activeSection = 'Penemuan';
+            } else if (path.includes('dashboard') || path.includes('admdashboard') || fullUrl.includes('dashboard')) {
                 this.activeSection = 'admDashboard';
-                window.history.replaceState(null, null, '#admDashboard');
+            } else {
+                // Default fallback - check if we're on root or any other page
+                this.activeSection = 'admDashboard';
             }
 
-            this.setupScrollHandler();
-        },
-        setupScrollHandler() {
-            let ticking = false;
-
-            const checkSections = () => {
-                const scrollPosition = window.scrollY + (window.innerHeight / 3);
-
-                this.sections.forEach(section => {
-                    const el = document.getElementById(section);
-                    if (el) {
-                        const { offsetTop, offsetHeight } = el;
-                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                            if (this.activeSection !== section) {
-                                this.activeSection = section;
-                                window.history.replaceState(null, null, `#${section}`);
-                            }
-                        }
-                    }
-                });
-
-                ticking = false;
-            };
-
-            window.addEventListener('scroll', () => {
-                if (!ticking) {
-                    window.requestAnimationFrame(checkSections);
-                    ticking = true;
-                }
-            }, { passive: true });
-        },
-        scrollTo(section) {
-            this.activeSection = section;
-            const el = document.getElementById(section);
-            if (el) {
-                window.scrollTo({
-                    top: el.offsetTop,
-                    behavior: 'smooth'
-                });
-                window.history.replaceState(null, null, `#${section}`);
-            }
+            console.log('Active section set to:', this.activeSection); // Debug log
         }
     }"
         class="fixed top-0 left-0 right-0 w-full bg-white/50 backdrop-blur z-50 shadow-sm border-b font-[Nexa]">
@@ -89,14 +59,13 @@
                     <div class="flex items-center justify-center h-12 w-12">
                         <img src="{{ asset('img/Logo 1.png') }}" alt="Logo" class="h-10 w-auto" />
                     </div>
-                    <a href="/admDashboard" class="font-bold text-2xl">ReFind.</a>
+                    <a href="{{ route('admDashboard') }}" class="font-bold text-2xl">ReFind.</a>
                 </div>
 
                 <!-- Navigation - Center -->
                 <div class="hidden md:flex items-center justify-center flex-1">
                     <div class="flex space-x-12 items-center font-medium">
-                        <a href="#admDashboard" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('admDashboard')"
+                        <a href="{{ route('admDashboard') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'admDashboard',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
@@ -106,8 +75,7 @@
                                 :class="activeSection === 'admDashboard' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="#Kehilangan" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('Kehilangan')"
+                        <a href="{{ route('admKehilangan') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'Kehilangan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
@@ -117,8 +85,7 @@
                                 :class="activeSection === 'Kehilangan' ? 'w-full' : 'w-0 group-hover:w-full'"></span>
                         </a>
 
-                        <a href="#Penemuan" class="relative group py-2 transition-all duration-200"
-                            @click.prevent="scrollTo('Penemuan')"
+                        <a href="{{ route('admPenemuan') }}" class="relative group py-2 transition-all duration-200"
                             :class="{
                                 'text-blue-600': activeSection === 'Penemuan',
                                 'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
@@ -169,9 +136,9 @@
                 x-transition:leave-end="opacity-0 transform scale-95"
                 class="md:hidden border-t border-gray-200 bg-white">
                 <div class="px-2 pt-2 pb-3 space-y-1">
-                    <a href="#admDashboard"
+                    <a href="{{ route('admDashboard') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('admDashboard'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'admDashboard',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'admDashboard'
@@ -180,9 +147,9 @@
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
                             :class="activeSection === 'admDashboard' ? 'w-16' : 'w-0'"></span>
                     </a>
-                    <a href="#Kehilangan"
+                    <a href="{{ route('admKehilangan') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('Kehilangan'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'Kehilangan',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'Kehilangan'
@@ -191,9 +158,9 @@
                         <span class="absolute bottom-0 left-3 h-0.5 bg-blue-600 transition-all duration-300"
                             :class="activeSection === 'Kehilangan' ? 'w-12' : 'w-0'"></span>
                     </a>
-                    <a href="#Penemuan"
+                    <a href="{{ route('admPenemuan') }}"
                         class="relative block px-3 py-2 text-base font-medium transition-colors duration-200"
-                        @click.prevent="scrollTo('Penemuan'); isOpen = false"
+                        @click="isOpen = false"
                         :class="{
                             'text-blue-600': activeSection === 'Penemuan',
                             'text-gray-700 hover:text-blue-600': activeSection !== 'Penemuan'
@@ -222,6 +189,134 @@
             </div>
         </div>
     </nav>
+    <div class="max-w-7xl mx-auto">
+        <!-- Header with Back Button -->
+        <div class="mb-6">
+            <button onclick="window.history.back()"
+                class="text-slate-700 hover:text-blue-600 flex items-center space-x-2 transition-colors duration-300 font-medium">
+                <span>← Kembali</span>
+            </button>
+        </div>
+
+        <!-- Title Section -->
+        <div class="text-center mb-8">
+            <div class="inline-flex items-center justify-center mb-4">
+                <div class="header-line h-1 w-32 rounded-full"></div>
+                <h1 class="text-3xl md:text-4xl font-bold text-black mx-6">Data Kehilangan</h1>
+                <div class="header-line h-1 w-32 rounded-full"></div>
+            </div>
+            <p class="text-slate-600 text-lg">Daftar barang hilang yang dilaporkan pengguna</p>
+        </div>
+
+        <!-- Table Container -->
+        <div class="table-container bg-slate-200 rounded-2xl overflow-hidden overflow-x-auto">
+            <table class="w-full table-auto">
+                <!-- Table Header -->
+                <thead class="bg-gradient-to-r from-slate-700 to-slate-800 text-white">
+                    <tr>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            No.
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Nama
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Nomor Telepon
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Barang Hilang
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Deskripsi
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Lokasi
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Waktu
+                        </th>
+                        <th class="px-4 py-4 text-left font-semibold text-sm md:text-base whitespace-nowrap">
+                            Kontak
+                        </th>
+                    </tr>
+                </thead>
+
+                <!-- Table Body -->
+                <tbody class="divide-y divide-gray-200">
+                    <!-- Row 1 -->
+                    <tr
+                        class="table-row transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50">
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">1</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">Budiono Siregar</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">08118233212</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">Kapal Laut</p>
+                        </td>
+                        <td class="px-4 py-4">
+                            <p class="font-semibold text-gray-900">Besar dan Panjang</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">Masjid UNEJ</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">Sekitar jam 3 sore</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <button
+                                class="whatsapp-btn text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                                </svg>
+                                <span>WhatsApp</span>
+                            </button>
+                        </td>
+                    </tr>
+                    <!-- Row 2 -->
+                    <tr
+                        class="table-row transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50">
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">2</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">Budiono Siregar</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">08118233212</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <p class="font-semibold text-gray-900">Kapal Laut</p>
+                        </td>
+                        <td class="px-4 py-4">
+                            <p class="font-semibold text-gray-900">Besar dan Panjang</p>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">Masjid UNEJ</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <span class="font-semibold text-gray-900">Sekitar jam 3 sore</span>
+                        </td>
+                        <td class="px-4 py-4 whitespace-nowrap">
+                            <button
+                                class="whatsapp-btn text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 flex items-center space-x-2">
+                                <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path
+                                        d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.488" />
+                                </svg>
+                                <span>WhatsApp</span>
+                            </button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -17,3 +17,7 @@ Route::get('/kehilangan', function () {
 Route::get('/penemuan', function () {
     return view('penemuan');
 })->name('penemuan');
+
+Route::get('/admDashboard', function () {
+    return view('admDashboard');
+})->name('admDashboard');

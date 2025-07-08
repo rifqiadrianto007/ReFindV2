@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('login');
-});
+})->name('login');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -21,3 +21,11 @@ Route::get('/penemuan', function () {
 Route::get('/admDashboard', function () {
     return view('admDashboard');
 })->name('admDashboard');
+
+Route::get('/admKehilangan', function () {
+    return view('admKehilangan');
+})->name('admKehilangan');
+
+Route::get('/admPenemuan', function () {
+    return view('admPenemuan');
+})->name('admPenemuan');
